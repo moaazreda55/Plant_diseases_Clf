@@ -2,10 +2,9 @@ FROM python:3.11
 
 WORKDIR /app
 
-COPY . .
-
 RUN pip install torch torchvision streamlit Pillow
 
+COPY . .
 
 RUN python download_model.py
 
