@@ -1,8 +1,9 @@
-FROM python:3.11
+# if you already have app_img from last session  or electropi_img
+FROM app_img:latest
 
 WORKDIR /app
 
-RUN pip install torch torchvision streamlit Pillow
+RUN pip install torch torchvision 
 
 COPY . .
 
