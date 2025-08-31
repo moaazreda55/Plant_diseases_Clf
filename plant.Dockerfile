@@ -4,7 +4,7 @@ FROM python:3.11
 
 WORKDIR /app
 
-RUN pip install torch torchvision streamlit Pillow
+RUN pip install torch torchvision streamlit Pillow gdown
 
 COPY . .
 
