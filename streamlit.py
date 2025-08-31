@@ -17,7 +17,7 @@ CLASS_NAMES = {
 
 st.title("Plant Image Classifier")
 
-uploaded_file = st.file_uploader("Upload an image", type=["jpg","png"])
+uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
 
 if uploaded_file is not None:
    
@@ -25,6 +25,7 @@ if uploaded_file is not None:
     
     transform = transforms.Compose([
         transforms.Resize(256),
+        transforms.CenterCrop(224),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
@@ -36,5 +37,5 @@ if uploaded_file is not None:
         _, predicted = torch.max(output, 1)
         disease = CLASS_NAMES[predicted.item()]
     
-    st.image(image, caption='Uploaded Image', use_column_width=True)
+    st.image(image, use_column_width=True)
     st.write(f"Predicted class is :  {disease}")
